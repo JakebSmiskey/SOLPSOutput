@@ -24,4 +24,4 @@ class IonizationPotential:
             for num in range(len(data[i])):
                 data[i][num] = float(data[i][num])
         setattr(self,"pot",data)
-data = IonizationPotential("ionization_potentials")
+
