@@ -38,4 +38,5 @@ class BalanceNC:
             else:
                 setattr(self,var_name,data)
 
-
+if __name__ == "__main__":
+    test_balance = BalanceNC("balance.nc")
