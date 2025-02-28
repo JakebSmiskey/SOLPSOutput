@@ -19,6 +19,7 @@ The SOLPS-ITER files read:
  -fort.44
  -fort.46
  -b2fplasmf
+ -gfile
  
 The ionization_potentials file is static and contains the ionization energy
 for all charge states up to Rd.
@@ -45,13 +46,16 @@ import os
 import argparse
         
 parser = argparse.ArgumentParser()
+parser.add_argument('-g', nargs='?', const='gfile', type=str, default='.', help='Name of the gfile')
 parser.add_argument('-s', nargs='?', const='./', type=str, default='.', help='SOLPS-ITER run directory')
 parser.add_argument('-f', nargs='?', const='filename', type=str, default="SOLPS_vars", help="Specify Output File Name")
 args = parser.parse_args()
 directory = args.s
+gfile = args.g
 filename = args.f
 f44 = Fort44_Reader.Fort44(directory +"/fort.44", directory+"/input.dat")
 f46 = Fort46_Reader.Fort46(directory +"/fort.46")
+gfile = GEQDSK_Reader.GEQDSK(directory + gfile)
 b2fstate = B2fstate_Reader.B2fstate(directory +"/b2fstate")
 balance = Balance_Reader.BalanceNC(directory+"/balance.nc")
 b2fplasmf = B2fplasmf_Reader.B2fplasmf(directory+"/b2fplasmf",balance.nx,balance.ny,balance.ns) 
