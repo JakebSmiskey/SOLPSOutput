@@ -29,7 +29,6 @@ Therefore the SOLPS-ITER Manual should be used when determining what variable na
 should be used.
 
 The flags are:
-    -g = gfile name
     -s = SOLPS-ITER run directory
     -f = Output filename
 
@@ -55,6 +54,6 @@ f46 = Fort46_Reader.Fort46(directory +"/fort.46")
 b2fstate = B2fstate_Reader.B2fstate(directory +"/b2fstate")
 balance = Balance_Reader.BalanceNC(directory+"/balance.nc")
 b2fplasmf = B2fplasmf_Reader.B2fplasmf(directory+"/b2fplasmf",balance.nx,balance.ny,balance.ns) 
-ion_pots = IonizationPotential_Reader.IonizationPotential(directory +"/ionization_potentials")
-variable = SOLPSOutput.SOLPSOutput(f44,f46,gfile,b2fstate,ion_pots,balance,b2fplasmf)
+ion_pots = IonizationPotential_Reader.IonizationPotential("/fusion/projects/codes/solps/SOLPS-ITER/public_code/solps-iter_release_jun2021/modules/B2.5/Database/ionization_potentials")
+variable = SOLPSOutput.SOLPSOutput(f44,f46,b2fstate,ion_pots,balance,b2fplasmf)
 np.save(directory+"/"+filename+".npy",variable, allow_pickle=True)

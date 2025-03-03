@@ -23,10 +23,11 @@ import IonizationPotential_Reader
 import Balance_Reader
 
 
-class SOLPSOutput:
-    def __init__(self, f44, f46, b2fstate, ion_pots, balance,b2fplasmf):
+class SOLPSOutputGfile:
+    def __init__(self, f44, f46,gfile,b2fstate, ion_pots, balance,b2fplasmf):
         self.__dict__.update(**f44.__dict__)
         self.__dict__.update(**f46.__dict__)
+        self.__dict__.update(**gfile.__dict__)
         self.__dict__.update(**b2fstate.__dict__)
         self.__dict__.update(**ion_pots.__dict__)
         self.__dict__.update(**balance.__dict__)

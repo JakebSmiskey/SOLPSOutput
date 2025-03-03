@@ -41,24 +41,43 @@ Jakeb
 
 import Balance_Reader,B2fstate_Reader,GEQDSK_Reader,Fort44_Reader,Fort46_Reader,IonizationPotential_Reader,B2fplasmf_Reader
 import numpy as np
-import SOLPSOutput
+import SOLPSOutputGfile
 import os 
 import argparse
-        
+import re
+
+def find_gfile(directory):
+    """
+    Search for .npy files in the given directory and its subdirectories.
+    
+    Args:
+        directory (str): The path to the directory to search.
+    
+    Returns:
+        list: A list of full file paths for all .npy files found.
+    """
+    pattern = re.compile(r"^g\d+")  # Regex to match filenames like 'g123', 'g456.txt', etc.
+    matching_files = []
+
+    for root, _, files in os.walk(directory):  # Recursively walk through directory
+        for file in files:
+            if pattern.match(file):  # Check if the filename matches the pattern
+                matching_files.append(os.path.join(root, file))
+    return matching_files[0]
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', nargs='?', const='gfile', type=str, default='.', help='Name of the gfile')
 parser.add_argument('-s', nargs='?', const='./', type=str, default='.', help='SOLPS-ITER run directory')
 parser.add_argument('-f', nargs='?', const='filename', type=str, default="SOLPS_vars", help="Specify Output File Name")
 args = parser.parse_args()
 directory = args.s
-gfile = args.g
+gfile = find_gfile(directory)
 filename = args.f
 f44 = Fort44_Reader.Fort44(directory +"/fort.44", directory+"/input.dat")
 f46 = Fort46_Reader.Fort46(directory +"/fort.46")
-gfile = GEQDSK_Reader.GEQDSK(directory + gfile)
+gfile = GEQDSK_Reader.GEQDSK(gfile)
 b2fstate = B2fstate_Reader.B2fstate(directory +"/b2fstate")
 balance = Balance_Reader.BalanceNC(directory+"/balance.nc")
 b2fplasmf = B2fplasmf_Reader.B2fplasmf(directory+"/b2fplasmf",balance.nx,balance.ny,balance.ns) 
-ion_pots = IonizationPotential_Reader.IonizationPotential(directory +"/ionization_potentials")
-variable = SOLPSOutput.SOLPSOutput(f44,f46,gfile,b2fstate,ion_pots,balance,b2fplasmf)
+ion_pots = IonizationPotential_Reader.IonizationPotential("/fusion/projects/codes/solps/SOLPS-ITER/public_code/solps-iter_release_jun2021/modules/B2.5/Database/ionization_potentials")
+variable = SOLPSOutputGfile.SOLPSOutputGfile(f44,f46,gfile,b2fstate,ion_pots,balance,b2fplasmf)
 np.save(directory+"/"+filename+".npy",variable, allow_pickle=True)
