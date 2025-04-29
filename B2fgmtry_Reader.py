@@ -3,7 +3,10 @@
 """
 Created on Thu Nov 14 11:40:43 2024
 
-@author: jakeb
+@author: Jakeb Smiskey 
+
+Reads the b2fgmty file
+Defines nx, ny, hz, cell corners, and mesh verticies for the SOLPS Mesh
 """
 import numpy as np
 class B2fgmtry:
