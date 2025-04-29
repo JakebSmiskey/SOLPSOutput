@@ -3,15 +3,16 @@
 """
 Created on Thu Nov 14 10:22:23 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads the b2fplasmf file generated from running "b2run b2uf" in the command line.
+Converts Temperature from Joules to eV
+
 """
 
 import numpy as np
 class B2fplasmf:
     def __init__(self,file,nx,ny,ns):
-        self.file = file
-        self.read = self.read_file(file)
-        self.process_file(self.read,nx,ny,ns)
+        self.process_file(self.read_file(file),nx,ny,ns)
         
     def read_file(self,data):
         try:
