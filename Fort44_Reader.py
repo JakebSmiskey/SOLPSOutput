@@ -3,7 +3,8 @@
 """
 Created on Tue Nov 12 11:32:54 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads the fort.44 file. The variables are defined below and further definitions are in the SOLPS-ITER manual. This requires the input.dat to run correctly.
 """
 import numpy as np
 
