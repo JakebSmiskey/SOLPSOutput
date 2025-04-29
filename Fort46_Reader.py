@@ -3,7 +3,9 @@
 """
 Created on Wed Nov 13 17:45:46 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads fort.44 file and defines variables below. More information is obtained in the SOLPS-ITER manual.
+
 """
 import numpy as np
 
