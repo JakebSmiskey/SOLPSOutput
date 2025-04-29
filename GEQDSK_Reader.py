@@ -1,22 +1,12 @@
 #!/fusion/projects/codes/pyped/python3/bin/python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Nov 14 10:58:09 2023
-
-@author: welsh
-"""
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct  4 10:30:58 2023
-
-@author: welsh
-"""
-"""
-Modified on Mon Jan 22 2024
 Modified on Thu Oct 17 2024
 Naming conventions after Matlab script written by Ben Zhu
 
-@author: taczak
+@author: Tate Taczak, Austin Welsh, and Jakeb Smiskey
+
+Reads the gfile and calculates grad shafranov aligned flux surfaces in the core. 
 """
 
 import numpy as np
