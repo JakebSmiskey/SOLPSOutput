@@ -3,7 +3,8 @@
 """
 Created on Thu Nov 14 11:36:07 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads the ionization potential text file provided in the SOLPS-ITER source code. The file is included within this git repository for ease of retreival.  
 """
 import numpy as np
 class IonizationPotential:
