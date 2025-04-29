@@ -3,7 +3,10 @@
 """
 Created on Wed Nov 20 16:12:38 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads the balance.nc file using the netCDF4 module. 
+Defines nx, ny, ns, cell corners, and the SOLPS Mesh Verticies
+
 """
 
 import netCDF4 as nc
