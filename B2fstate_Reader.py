@@ -3,7 +3,9 @@
 """
 Created on Wed Nov 13 17:55:40 2024
 
-@author: jakeb
+@author: Jakeb Smiskey
+Reads the B2fstate file. Some of the variables are defined below with associated comments taken directly from the SOLPS-ITER manual.
+
 """
 import numpy as np
 class B2fstate:
@@ -19,7 +21,6 @@ class B2fstate:
     te = None #(-1:nx,-1:ny) real*8 array. For (ix,iy) in (-1:nx,-1:ny), te(ix,iy) specifies the electron temperature on the (ix,iy) cell. It will hold that 0.lt.te(,).
     ti = None #(-1:nx,-1:ny) real*8 array.For (ix,iy) in (-1:nx,-1:ny), ti(ix,iy) specifies the all atomtemperature on the (ix,iy) cell. It will hold that 0.lt.ti(,).
     po = None #(-1:nx,-1:ny) real*8 array. For (ix,iy) in (-1:nx,-1:ny), po(ix,iy) specifies the electric potential on the (ix,iy) cell.
-    
     
     #For all the fluxes below, the sign convention is as follows.
     #Fluxes between poloidal neighbors are positive if directed in the direction of increasing poloidal (ix) index.
