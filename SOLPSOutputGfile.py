@@ -6,7 +6,8 @@ Created on Thu Nov 14 13:15:46 2024
 @author: Jakeb Smiskey and Ray Mattis
 
 This class populates a dictionary with the outputs of the reader classes 
-and derives some quantities that might be useful
+and derives some quantities that might be useful. This file specifically reads the 
+gfile as opposed to the non-gfile case. 
 
 Add new quanitites you want derived in this file as it will speed up future
 post processing!
